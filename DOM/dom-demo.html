@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Full Example</title>
+  <style>
+    .active {
+      background-color: lightgreen;
+      color: darkgreen;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="main-heading">Hello DOM!</h1>
+  <p class="info">This is a paragraph.</p>
+  <button id="changeBtn">Change Text</button>
+  <button id="addParaBtn">Add Paragraph</button>
+  <button id="removeParaBtn">Remove Paragraph</button>
+
+  <script>
+    // ✅ 1. Select Elements
+    let heading = document.getElementById("main-heading");
+    let para = document.querySelector(".info");
+    let changeBtn = document.getElementById("changeBtn");
+    let addBtn = document.getElementById("addParaBtn");
+    let removeBtn = document.getElementById("removeParaBtn");
+
+    // ✅ 2. Change Text and Style on Click
+    changeBtn.addEventListener("click", () => {
+      heading.textContent = "Welcome Jatin!";
+      para.innerHTML = "<b>Text changed and bold!</b>";
+      heading.style.color = "white";
+      heading.style.backgroundColor = "black";
+      heading.classList.add("active");
+    });
+
+    // ✅ 3. Add New Paragraph on Click
+    let newPara; // define globally for removal
+    addBtn.addEventListener("click", () => {
+      newPara = document.createElement("p");
+      newPara.textContent = "This is a new paragraph added!";
+      newPara.style.color = "blue";
+      document.body.appendChild(newPara);
+    });
+
+    // ✅ 4. Remove New Paragraph on Click
+    removeBtn.addEventListener("click", () => {
+      if (newPara) {
+        document.body.removeChild(newPara);
+      }
+    });
+
+    // ✅ 5. Log some queries (demo)
+    console.log("Heading:", heading);
+    console.log("Includes 'DOM':", heading.textContent.includes("DOM"));
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Traversal</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Main Heading</h1>
+        <p>This is a paragraph.</p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

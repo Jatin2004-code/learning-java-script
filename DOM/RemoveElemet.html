@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Remove Element</title></head>
+<body>
+
+  <h2 id="heading">This is a heading</h2>
+  <button onclick="removeHeading()">Remove Heading</button>
+
+  <script>
+    function removeHeading() {
+      const heading = document.getElementById("heading");
+      heading.remove(); // removes from DOM
+    }
+  </script>
+
+</body>
+</html>

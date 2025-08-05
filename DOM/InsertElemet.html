@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Insert Elements</title></head>
+<body>
+
+  <h2>📌 Insert Example</h2>
+  <div id="container"></div>
+
+  <button onclick="addParagraph()">Add Paragraph</button>
+
+  <script>
+    function addParagraph() {
+      const para = document.createElement("p");
+      para.textContent = "✅ This is a new paragraph added!";
+      document.getElementById("container").appendChild(para);
+    }
+  </script>
+
+</body>
+</html>
