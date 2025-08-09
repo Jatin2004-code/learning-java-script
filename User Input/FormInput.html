@@ -1,0 +1,12 @@
+<form id="myForm">
+  <input type="text" id="username" placeholder="Enter username" />
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  document.getElementById("myForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // Page reload se bachaata hai
+    let user = document.getElementById("username").value;
+    console.log("User entered:", user);
+  });
+</script>
