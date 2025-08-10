@@ -1,0 +1,9 @@
+<h1 id="heading">Hello</h1>
+<button onclick="changeText()">Click Me</button>
+
+<script>
+  function changeText() {
+    const h1 = document.getElementById("heading"); // 👈 access by ID
+    h1.textContent = "👋 Welcome!";
+  }
+</script>
