@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Events + setTimeout + setInterval</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    .outer {
+      padding: 30px;
+      background-color: #ffdede;
+    }
+
+    .inner {
+      padding: 20px;
+      background-color: #ffc;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
+
+    #timer {
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>JavaScript: Event Bubbling + setTimeout + setInterval</h2>
+
+  <!-- 📌 Event Bubbling -->
+  <div class="outer" id="outer">
+    Outer Div
+    <div class="inner" id="inner">
+      Inner Div (Click Me)
+    </div>
+  </div>
+
+  <!-- 📌 setTimeout -->
+  <button id="timeoutBtn">Start setTimeout</button>
+
+  <!-- 📌 setInterval -->
+  <button id="startInterval">Start Timer</button>
+  <button id="stopInterval">Stop Timer</button>
+  <div id="timer">Timer: 0</div>
+
+  <script>
+    // 🔥 1. Event Bubbling
+    const outerDiv = document.getElementById("outer");
+    const innerDiv = document.getElementById("inner");
+
+    outerDiv.addEventListener("click", () => {
+      alert("Outer Div Clicked (Bubbling)");
+    });
+
+    innerDiv.addEventListener("click", (e) => {
+      alert("Inner Div Clicked");
+      // e.stopPropagation(); // uncomment this to stop bubbling
+    });
+
+    // 🔥 2. setTimeout Example
+    document.getElementById("timeoutBtn").addEventListener("click", () => {
+      setTimeout(() => {
+        alert("setTimeout called after 2 seconds!");
+      }, 2000);
+    });
+
+    // 🔥 3. setInterval & clearInterval
+    let count = 0;
+    let timerId;
+
+    document.getElementById("startInterval").addEventListener("click", () => {
+      timerId = setInterval(() => {
+        count++;
+        document.getElementById("timer").textContent = `Timer: ${count}`;
+      }, 1000);
+    });
+
+    document.getElementById("stopInterval").addEventListener("click", () => {
+      clearInterval(timerId);
+      document.getElementById("timer").textContent += " ⏹️ Stopped!";
+    });
+  </script>
+
+</body>
+</html>
