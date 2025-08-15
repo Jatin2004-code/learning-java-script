@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Callback Example</title></head>
+<body>
+
+  <h2>📞 Callback Demo</h2>
+  <button onclick="runCallback()">Start Callback</button>
+  <p id="callbackResult"></p>
+
+  <script>
+    function fetchData(callback) {
+      setTimeout(() => {
+        let data = "📦 Data fetched using Callback";
+        callback(data);
+      }, 2000);
+    }
+
+    function runCallback() {
+      document.getElementById("callbackResult").textContent = "Loading...";
+      fetchData(function(result) {
+        document.getElementById("callbackResult").textContent = result;
+      });
+    }
+  </script>
+
+</body>
+</html>
