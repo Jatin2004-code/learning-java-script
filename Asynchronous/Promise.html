@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head><title>Promise Example</title></head>
+<body>
+
+  <h2>📜 Promise Demo</h2>
+  <button onclick="runPromise()">Start Promise</button>
+  <p id="promiseResult"></p>
+
+  <script>
+    function fetchData() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const success = true; // Change to false to test error
+          if (success) {
+            resolve("✅ Data fetched using Promise");
+          } else {
+            reject("❌ Error while fetching data!");
+          }
+        }, 2000);
+      });
+    }
+
+    function runPromise() {
+      document.getElementById("promiseResult").textContent = "Loading...";
+      fetchData()
+        .then((result) => {
+          document.getElementById("promiseResult").textContent = result;
+        })
+        .catch((err) => {
+          document.getElementById("promiseResult").textContent = err;
+        });
+    }
+  </script>
+
+</body>
+</html>
+
+
+
