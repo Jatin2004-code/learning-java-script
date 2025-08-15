@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OOP in JavaScript</title>
+</head>
+<body>
+  <h2>Open your Console (Ctrl+Shift+I) to see the OOP concepts output</h2>
+
+  <script>
+    console.log("====== 1. Encapsulation ======");
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      greet() {
+        console.log(`Hi, I'm ${this.name} and I'm ${this.age} years old.`);
+      }
+    }
+
+    const p1 = new Person("Jatin", 22);
+    p1.greet(); // Output
+
+    console.log("\n====== 2. Abstraction ======");
+    class Car {
+      constructor() {
+        this.engineOn = false;
+      }
+
+      startEngine() {
+        this.engineOn = true;
+        console.log("🚗 Engine started!");
+      }
+
+      drive() {
+        if (this.engineOn) {
+          console.log("🚙 Driving...");
+        } else {
+          console.log("❌ Start the engine first.");
+        }
+      }
+    }
+
+    const myCar = new Car();
+    myCar.drive();       // Will ask to start engine
+    myCar.startEngine(); // Start engine
+    myCar.drive();       // Now it drives
+
+    console.log("\n====== 3. Inheritance ======");
+    class Animal {
+      eat() {
+        console.log("Animal is eating...");
+      }
+    }
+
+    class Dog extends Animal {
+      bark() {
+        console.log("🐶 Dog is barking...");
+      }
+    }
+
+    const tommy = new Dog();
+    tommy.eat();  // Inherited method
+    tommy.bark(); // Own method
+
+    console.log("\n====== 4. Polymorphism ======");
+    class Animal2 {
+      speak() {
+        console.log("Animal makes a sound");
+      }
+    }
+
+    class Cat extends Animal2 {
+      speak() {
+        console.log("🐱 Meow!");
+      }
+    }
+
+    class Dog2 extends Animal2 {
+      speak() {
+        console.log("🐶 Bark!");
+      }
+    }
+
+    const animals = [new Animal2(), new Cat(), new Dog2()];
+    animals.forEach((a) => a.speak());  // Polymorphic behavior
+  </script>
+</body>
+</html>

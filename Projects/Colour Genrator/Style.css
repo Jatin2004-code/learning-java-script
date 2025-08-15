@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5;
+    transition: background-color 0.5s ease;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 320px;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.color-box {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 20px auto;
+    /* Color change ko smooth banane ke liye */
+    transition: background-color 0.5s ease;
+}
+
+.hex-code {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 25px;
+    /* Text ko copy karne mein aasaan banata hai */
+    user-select: all;
+}
+
+#generateBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#generateBtn:hover {
+    background-color: #0056b3;
+}
+
+#generateBtn:active {
+    transform: scale(0.98);
+}

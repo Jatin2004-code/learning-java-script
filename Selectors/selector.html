@@ -1,0 +1,175 @@
+//Selectors/selector.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Selection Methods</title>
+</head>
+<body>
+
+    <h1>JavaScript DOM Selection</h1>
+
+    <div id="main-box">Ye div ID se select hoga.</div>
+    <hr>
+
+    <p class="info">Ye pehla paragraph hai class se.</p>
+    <p class="info">Ye doosra paragraph hai class se.</p>
+    <hr>
+
+    <ul>
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+        <li>List Item 3</li>
+    </ul>
+
+    <script>
+        console.log("--- Script Start ---");
+
+        // 1. getElementById
+        // Ye 'main-box' ID wale element ko select karega.
+        const box = document.getElementById("main-box");
+        box.style.backgroundColor = "lightblue";
+        box.style.padding = "10px";
+        console.log("getElementById se select kiya:", box);
+
+        // 2. getElementsByClassName
+        // Ye 'info' class wale saare elements ko select karega.
+        const paragraphs = document.getElementsByClassName("info");
+        // Hum pehle element (index 0) ka style badal rahe hain.
+        paragraphs[0].style.color = "purple";
+        console.log("getElementsByClassName se select kiya (HTMLCollection):", paragraphs);
+
+        // 3. getElementsByTagName
+        // Ye saare 'li' tag wale elements ko select karega.
+        const listItems = document.getElementsByTagName("li");
+        console.log("Total 'li' tags (getElementsByTagName):", listItems.length);
+
+        // 4. querySelector (The All-Rounder)
+        // Ye CSS selector se match hone wala PEHLA element select karta hai.
+        // Hum doosre 'info' class wale p ko target kar rahe hain
+        const firstInfoPara = document.querySelector(".info");
+        firstInfoPara.style.fontWeight = "bold";
+        console.log("querySelector se select kiya:", firstInfoPara);
+        
+        // 5. querySelectorAll
+        // Ye CSS selector se match hone wale SAARE elements ko select karta hai.
+        const allListItems = document.querySelectorAll("li");
+        console.log("querySelectorAll se select kiya (NodeList):", allListItems);
+
+        // Hum forEach loop ka use karke sabhi list items ka style badal rahe hain.
+        allListItems.forEach(item => {
+            item.style.border = "1px solid green";
+            item.style.marginTop = "5px";
+        });
+        
+        console.log("--- Script End ---");
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+//Additional Example for matches, closest, contains
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM Methods</title>
+    <style>
+        div {
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>matches, closest, contains - Example</h1>
+
+    <div id="grandparent" class="container">
+        I am the Grandparent
+        <div id="parent" class="box">
+            I am the Parent
+            <span id="child">I am the Child element.</span>
+        </div>
+    </div>
+
+    <script>
+        console.log("--- Script Start ---");
+
+        // Sabse pehle, hum elements ko select kar lete hain
+        let child = document.getElementById("child");
+        let parent = document.getElementById("parent");
+        let grandparent = document.getElementById("grandparent");
+
+        // --- 1. matches() Method ---
+        // Ye check karta hai ki kya element diye gaye selector se match hota hai.
+        console.log("## matches() Examples ##");
+        console.log("Kya 'child' ek span hai? ->", child.matches("span")); // true
+        console.log("Kya 'parent' mein .box class hai? ->", parent.matches(".box")); // true
+        console.log("Kya 'grandparent' mein .box class hai? ->", grandparent.matches(".box")); // false
+        
+        console.log("--------------------");
+
+        // --- 2. closest() Method ---
+        // Ye element se upar ki taraf (parents mein) selector ko dhoondhta hai.
+        console.log("## closest() Examples ##");
+        // 'child' ka sabse kareebi parent jo 'div' ho
+        let closestDiv = child.closest("div");
+        console.log("Child ka sabse kareebi div parent:", closestDiv); // parent div milega
+
+        // 'child' ka sabse kareebi parent jiski ID 'grandparent' ho
+        let closestGrandparent = child.closest("#grandparent");
+        console.log("Child ka '#grandparent' parent:", closestGrandparent);
+        
+        console.log("--------------------");
+
+        // --- 3. contains() Method ---
+        // Ye check karta hai ki kya ek element doosre element ke andar hai.
+        console.log("## contains() Examples ##");
+        console.log("Kya 'grandparent' ke andar 'child' hai? ->", grandparent.contains(child)); // true
+        console.log("Kya 'parent' ke andar 'grandparent' hai? ->", parent.contains(grandparent)); // false
+        // parent, grandparent ka bachha hai, isliye ye false hai.
+
+        console.log("--- Script End ---");
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+//Selectors/selector.html
+<!DOCTYPE html>
+<html>
+<head><title>Selectors</title></head>
+<body>
+
+  <h1 id="title">Hello!</h1>
+  <p class="info">This is paragraph 1</p>
+  <p class="info">This is paragraph 2</p>
+
+  <script>
+    let byId = document.getElementById("title");
+    let byClass = document.getElementsByClassName("info");
+    let byTag = document.getElementsByTagName("p");
+    let q1 = document.querySelector(".info");
+    let qAll = document.querySelectorAll(".info");
+
+    console.log("ID:", byId);
+    console.log("By Class:", byClass);
+    console.log("By Tag:", byTag);
+    console.log("querySelector:", q1);
+    console.log("querySelectorAll:", qAll);
+  </script>
+
+</body>
+</html>

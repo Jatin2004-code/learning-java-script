@@ -1,0 +1,10 @@
+❌ Error caught: c is not defined
+✅ Result of 10/2 is: 5
+❌ Denominator can't be zero!
+✅ y = 20
+🧹 This will always run (finally block)
+✅ Age is valid: 21
+❌ Age can't be negative!
+❌ You are underage!
+✅ JSON parsed: {name: 'Jatin', age: 22}
+❌ JSON parsing failed: Unexpected token n in JSON...

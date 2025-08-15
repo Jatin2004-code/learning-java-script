@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Error Handling</title>
+</head>
+<body>
+  <h2>Open Console to See Output</h2>
+
+  <script>
+    // ✅ 1. Basic try-catch example
+    try {
+      let a = 5;
+      let b = a + c; // 'c' is not defined → error
+    } catch (error) {
+      console.log("❌ Error caught:", error.message);
+    }
+
+    // ✅ 2. Division function with error handling
+    function divide(a, b) {
+      try {
+        if (b === 0) {
+          throw new Error("Denominator can't be zero!");
+        }
+        console.log(`✅ Result of ${a}/${b} is:`, a / b);
+      } catch (err) {
+        console.log("❌", err.message);
+      }
+    }
+
+    divide(10, 2);  // Valid
+    divide(10, 0);  // Error case
+
+    // ✅ 3. try-catch-finally example
+    try {
+      let x = 10;
+      let y = x * 2;
+      console.log("✅ y =", y);
+    } catch (e) {
+      console.log("❌ Something went wrong");
+    } finally {
+      console.log("🧹 This will always run (finally block)");
+    }
+
+    // ✅ 4. Custom error using throw
+    function checkAge(age) {
+      try {
+        if (age < 0) {
+          throw new Error("Age can't be negative!");
+        } else if (age < 18) {
+          throw new Error("You are underage!");
+        }
+        console.log("✅ Age is valid:", age);
+      } catch (err) {
+        console.log("❌", err.message);
+      }
+    }
+
+    checkAge(21);    // Valid
+    checkAge(-5);    // Negative age error
+    checkAge(12);    // Underage error
+
+    // ✅ 5. JSON parsing with error handling
+    const jsonStr = '{ "name": "Jatin", "age": 22 }';  // Valid
+    const badJson = '{ name: Jatin, age: 22 }';         // Invalid
+
+    try {
+      const user = JSON.parse(jsonStr);
+      console.log("✅ JSON parsed:", user);
+    } catch (err) {
+      console.log("❌ Invalid JSON:", err.message);
+    }
+
+    try {
+      const broken = JSON.parse(badJson);
+    } catch (err) {
+      console.log("❌ JSON parsing failed:", err.message);
+    }
+  </script>
+</body>
+</html>
