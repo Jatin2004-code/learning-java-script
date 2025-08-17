@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Events Full Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    #box {
+      width: 250px;
+      height: 100px;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 100px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+
+    #output {
+      margin-top: 10px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>💥 JavaScript Events Demo</h2>
+
+  <!-- Click Event -->
+  <button id="clickBtn">Click Me</button>
+
+  <!-- Keyboard Event -->
+  <input type="text" id="keyInput" placeholder="Type something..." />
+
+  <!-- Mouse Events -->
+  <div id="box">Hover over me!</div>
+
+  <!-- Form Submit Event -->
+  <form id="demoForm">
+    <input type="text" placeholder="Enter something..." required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Output -->
+  <p id="output"></p>
+
+  <script>
+    // ✅ 1. Click Event
+    const clickBtn = document.getElementById("clickBtn");
+    clickBtn.addEventListener("click", () => {
+      document.getElementById("output").textContent = "🎯 Button was clicked!";
+    });
+
+    // ✅ 2. Keydown Event
+    const keyInput = document.getElementById("keyInput");
+    keyInput.addEventListener("keydown", (e) => {
+      document.getElementById("output").textContent = `⌨️ Key pressed: ${e.key}`;
+    });
+
+    // ✅ 3. Mouseover and Mouseout
+    const box = document.getElementById("box");
+
+    box.addEventListener("mouseover", () => {
+      box.style.backgroundColor = "lightgreen";
+      box.textContent = "Mouse is over me! 🐭";
+    });
+
+    box.addEventListener("mouseout", () => {
+      box.style.backgroundColor = "lightblue";
+      box.textContent = "Hover over me!";
+    });
+
+    // ✅ 4. Submit Event
+    const demoForm = document.getElementById("demoForm");
+
+    demoForm.addEventListener("submit", function (e) {
+      e.preventDefault(); // page reload na ho
+      document.getElementById("output").textContent = "✅ Form submitted successfully!";
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+// JavaScript remove Events
+function greet() {
+  alert("Hello!");
+}
+btn.addEventListener("click", greet);
+// Remove later
+btn.removeEventListener("click", greet);
